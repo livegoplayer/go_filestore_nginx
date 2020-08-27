@@ -12,16 +12,15 @@ services:
       ports:
          - "80:80"
       volumes:
-         - ../:/apps
-         - ./conf/nginx:/etc/nginx
-         # 日志存放路径，需要同级目录创建本目录
-         - ../logs:/apps/logs
-         - ./conf/nginx/nginx.conf:/usr/local/openresty/nginx/conf/nginx_template.conf
-         # - ./conf:/etc
-         # 测试目录
-         # - ./:/test
-         # - ./sh:/sh
-         # - ./supervisor:/supervisor
+        - ../:/apps
+        - ./conf/nginx:/etc/nginx
+        #consul-template
+        - ./consul-template:/consul-template
+        - ./consul-template/consul-template:/usr/local/bin/consul-template
+        # 日志存放路径，需要同级目录创建本目录
+        - ./supervisor:/supervisor
+        - ../logs:/apps/logs
+        - ./conf/nginx/nginx.conf:/usr/local/openresty/nginx/conf/nginx_template.conf
       command: /sh/start.sh
 
 
