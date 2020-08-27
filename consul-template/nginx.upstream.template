@@ -3,7 +3,7 @@
 {{- range services -}}
 {{$name := .Name}}
 {{$service := service .Name}}
-{{- if and (in .Tags "rpc") (in .Tags "go_filestore") -}}
+{{- if and (in .Tags "http") (in .Tags "go_filestore") -}}
 upstream {{$name}}_upstearm {
   zone upstream-{{$name}} 64k;
   {{range $service}}
